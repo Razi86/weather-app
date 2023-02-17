@@ -66,6 +66,8 @@ function toCentigrade(event) {
     let temperature = temperatureSpan.innerHTML;
     if (!tempIsCentigrade) {
         temperatureSpan.innerHTML = Math.round((temperature - 32) / 1.8);
+        changeToC.classList.add("active");
+        changeToF.classList.remove("active");
         tempIsCentigrade = true;
     }
 }
@@ -77,6 +79,8 @@ function toFahrenheit(event) {
     let temperature = temperatureSpan.innerHTML;
     if (tempIsCentigrade) {
         temperatureSpan.innerHTML = Math.round(1.8 * temperature + 32);
+        changeToF.classList.add("active");
+        changeToC.classList.remove("active");
         tempIsCentigrade = false;
     }
 }

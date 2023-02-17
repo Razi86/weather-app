@@ -46,6 +46,20 @@ p {
     color: #379237;
 }
 
-a {
+a,
+a:hover {
     text-decoration: none;
+    cursor: pointer;
+    color: rgb(32, 92, 255);
+}
+
+.active,
+.active:hover {
+    cursor: default;
+    color: #646464;
+}
+
+.units {
+    position: relative;
+    top: -8px;
 }
