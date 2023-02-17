@@ -25,6 +25,7 @@ let temperatureSpan = document.querySelector("#temperature");
 let desc = document.querySelector(".desc");
 let wind = document.querySelector("#wind");
 let humidity = document.querySelector("#humidity");
+let currentImage = document.querySelector(".current-temp-image");
 
 function search(event) {
     event.preventDefault();
@@ -54,6 +55,8 @@ function showTemperature(response) {
     desc.innerHTML = response.data.condition.description;
     humidity.innerHTML = response.data.temperature.humidity;
     wind.innerHTML = Math.round(response.data.wind.speed);
+    currentImage.setAttribute("src", response.data.condition.icon_url);
+    currentImage.setAttribute("alt", response.data.condition.icon);
 }
 
 let changeToC = document.querySelector("#change-to-C");

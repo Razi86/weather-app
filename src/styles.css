@@ -63,3 +63,7 @@ a:hover {
     position: relative;
     top: -8px;
 }
+
+.current-temp-image {
+    margin: -25px -25px -10px -15px;
+}
