@@ -19,7 +19,7 @@ form.addEventListener("submit", search);
 let searchIcon = document.querySelector(".fa-search");
 searchIcon.addEventListener("click", search);
 
-let APIkey = "d03082f141493054be15a6be78fc6dd5";
+let APIkey = "7t084503b2od5f40d89cabff66496e40";
 let city = document.querySelector("#city-name");
 let temperatureSpan = document.querySelector("#temperature");
 let desc = document.querySelector(".desc");
@@ -29,7 +29,7 @@ let humidity = document.querySelector("#humidity");
 function search(event) {
     event.preventDefault();
     let inputCity = document.querySelector("#search-input").value;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&units=metric&appid=${APIkey}`;
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${inputCity}&key=${APIkey}&units=metric`;
     axios.get(apiUrl).then(showTemperature);
 }
 
@@ -44,37 +44,39 @@ function currentLocation(event) {
 function showPosition(position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${APIkey}`;
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${APIkey}&units=metric`;
     axios.get(apiUrl).then(showTemperature);
 }
 
 function showTemperature(response) {
-    city.innerHTML = response.data.name;
-    temperatureSpan.innerHTML = Math.round(response.data.main.temp);
-    desc.innerHTML = response.data.weather[0].description;
-    humidity.innerHTML = response.data.main.humidity;
+    city.innerHTML = response.data.city;
+    temperatureSpan.innerHTML = Math.round(response.data.temperature.current);
+    desc.innerHTML = response.data.condition.description;
+    humidity.innerHTML = response.data.temperature.humidity;
     wind.innerHTML = Math.round(response.data.wind.speed);
 }
 
-//let changeToC = document.querySelector("#change-to-C");
-//let changeToF = document.querySelector("#change-to-F");
-//let tempIsCentigrade = true;
-/* changeToC.addEventListener("click", toCentigrade);
+let changeToC = document.querySelector("#change-to-C");
+let changeToF = document.querySelector("#change-to-F");
+let tempIsCentigrade = true;
+changeToC.addEventListener("click", toCentigrade);
+
 function toCentigrade(event) {
-  event.preventDefault();
-  let temperature = temperatureSpan.innerHTML;
-  if (!tempIsCentigrade) {
-    temperatureSpan.innerHTML = Math.round((temperature - 32) / 1.8);
-    tempIsCentigrade = true;
-  }
+    event.preventDefault();
+    let temperature = temperatureSpan.innerHTML;
+    if (!tempIsCentigrade) {
+        temperatureSpan.innerHTML = Math.round((temperature - 32) / 1.8);
+        tempIsCentigrade = true;
+    }
 }
 
 changeToF.addEventListener("click", toFahrenheit);
+
 function toFahrenheit(event) {
-  event.preventDefault();
-  let temperature = temperatureSpan.innerHTML;
-  if (tempIsCentigrade) {
-    temperatureSpan.innerHTML = Math.round(1.8 * temperature + 32);
-    tempIsCentigrade = false;
-  }
-} */
+    event.preventDefault();
+    let temperature = temperatureSpan.innerHTML;
+    if (tempIsCentigrade) {
+        temperatureSpan.innerHTML = Math.round(1.8 * temperature + 32);
+        tempIsCentigrade = false;
+    }
+}
