@@ -30,12 +30,13 @@ let currentImage = document.querySelector(".current-temp-image");
 function search(event) {
     event.preventDefault();
     let inputCity = document.querySelector("#search-input").value;
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${inputCity}&key=${APIkey}&units=metric`;
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${inputCity}&key=${APIkey}&units=metric`;
     axios.get(apiUrl).then(showTemperature);
 }
 
 let currentBtn = document.querySelector("#current-btn");
 currentBtn.addEventListener("click", currentLocation);
+window.addEventListener("load", currentLocation);
 
 function currentLocation(event) {
     event.preventDefault();
@@ -45,45 +46,49 @@ function currentLocation(event) {
 function showPosition(position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${APIkey}&units=metric`;
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${lat}&lon=${lon}&key=${APIkey}&units=metric`;
     axios.get(apiUrl).then(showTemperature);
 }
 
 function showTemperature(response) {
     city.innerHTML = response.data.city;
-    temperatureSpan.innerHTML = Math.round(response.data.temperature.current);
-    desc.innerHTML = response.data.condition.description;
-    humidity.innerHTML = response.data.temperature.humidity;
-    wind.innerHTML = Math.round(response.data.wind.speed);
-    currentImage.setAttribute("src", response.data.condition.icon_url);
-    currentImage.setAttribute("alt", response.data.condition.icon);
+    temperatureSpan.innerHTML = Math.round(response.data.daily[0].temperature.day);
+    desc.innerHTML = response.data.daily[0].condition.description;
+    humidity.innerHTML = response.data.daily[0].temperature.humidity;
+    wind.innerHTML = Math.round(response.data.daily[0].wind.speed);
+    currentImage.setAttribute("src", response.data.daily[0].condition.icon_url);
+    currentImage.setAttribute("alt", response.data.daily[0].condition.icon);
+    ForecastDay(response.data.daily);
 }
 
-let changeToC = document.querySelector("#change-to-C");
-let changeToF = document.querySelector("#change-to-F");
-let tempIsCentigrade = true;
-changeToC.addEventListener("click", toCentigrade);
+let forecast = document.querySelector(".forecast");
+let forecastHtml = "";
 
-function toCentigrade(event) {
-    event.preventDefault();
-    let temperature = temperatureSpan.innerHTML;
-    if (!tempIsCentigrade) {
-        temperatureSpan.innerHTML = Math.round((temperature - 32) / 1.8);
-        changeToC.classList.add("active");
-        changeToF.classList.remove("active");
-        tempIsCentigrade = true;
-    }
+function ForecastDay(forecastDays) {
+    forecastDays.forEach((day, index) => {
+        if (index < 4) {
+            forecastHtml += `<div class="col py-3 mx-3 text-center">
+            <h6>${ForecastTime(day.time)}</h6>
+            <img class="forecast-img" src="${day.condition.icon_url}" alt="${day.condition.icon}">
+            <p class="pt-3">${Math.round(day.temperature.minimum)}° ${Math.round(day.temperature.maximum)}°</p>
+            </div>`;
+        }
+    })
+
+    forecast.innerHTML = forecastHtml;
 }
 
-changeToF.addEventListener("click", toFahrenheit);
-
-function toFahrenheit(event) {
-    event.preventDefault();
-    let temperature = temperatureSpan.innerHTML;
-    if (tempIsCentigrade) {
-        temperatureSpan.innerHTML = Math.round(1.8 * temperature + 32);
-        changeToF.classList.add("active");
-        changeToC.classList.remove("active");
-        tempIsCentigrade = false;
-    }
+function ForecastTime(time) {
+    const forecastDaysOfWeek = [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+    ];
+    let forecastTime = new Date(time * 1000);
+    let forecastDay = forecastTime.getDay();
+    return forecastDaysOfWeek[forecastDay];
 }

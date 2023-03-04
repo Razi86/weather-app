@@ -10,27 +10,12 @@ h1 {
     font-family: "Sofia Sans", sans-serif;
 }
 
-.big-sun {
-    font-size: 60px;
-    color: rgb(255, 201, 22);
-}
-
-.small-sun {
-    font-size: 50px;
-    color: rgb(255, 201, 22);
-}
-
-.cloud-sun {
-    font-size: 49px;
-    color: rgb(32, 92, 255);
-}
-
 .gray-color {
     color: #646464;
 }
 
-.selected-box {
-    background: #ececec;
+.forecast .col:first-child {
+    background: #5acb0054;
 }
 
 input {
@@ -43,20 +28,7 @@ h6 {
 }
 
 p {
-    color: #379237;
-}
-
-a,
-a:hover {
-    text-decoration: none;
-    cursor: pointer;
-    color: rgb(32, 92, 255);
-}
-
-.active,
-.active:hover {
-    cursor: default;
-    color: #646464;
+    color: #007000;
 }
 
 .units {
@@ -66,4 +38,8 @@ a:hover {
 
 .current-temp-image {
     margin: -25px -25px -10px -15px;
+}
+
+.forecast-img {
+    margin: -13px -13px -20px -15px;
 }
