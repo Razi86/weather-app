@@ -1,4 +1,4 @@
-body {
+body,html {
   font-family: sans-serif;
   background: rgb(207, 255, 0);
   background: linear-gradient(
@@ -6,6 +6,7 @@ body {
     rgba(207, 255, 0, 0.49933476808692223) 0%,
     rgba(95, 186, 0, 0.4797269249496674) 100%
   );
+  height: 100%;
 }
 
 h1 {
@@ -52,6 +53,3 @@ a {
   text-decoration: none;
 }
 
-#current-btn {
-  display: block;
-}
