@@ -9,7 +9,7 @@ body {
   height: 100%;
 }
 
-.container{
+.background{
   min-height: 100%;
   background: rgb(207, 255, 0);
   background: linear-gradient(
@@ -21,6 +21,28 @@ body {
 
 h1 {
   font-family: "Sofia Sans", sans-serif;
+}
+
+.search-form{
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.search-form input{
+  width: 90%;
+}
+
+.fa-search{
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.temperature-view{
+  padding: 0 1.5rem;
+}
+
+.current-temperature{
+  margin-left: 15px;
 }
 
 .big-sun {
@@ -43,11 +65,11 @@ h1 {
 }
 
 .selected-box {
-  background: #ececec;
+  background: #c0e368;
 }
 
-input {
-  background: none;
+input,input:active,input:focus,input:focus-visible  {
+  background: none !important;
   outline: none;
 }
 
@@ -65,4 +87,56 @@ a {
 
 @media (max-width:568px) {
  
+  .container{
+    padding: 0;
+  }
+
+  .temperature-view{
+    padding: 0 0.5rem;
+  }
+
+  h1{
+    font-size: 1.5rem;
+  }
+
+  h3{
+    font-size: 1.2rem;
+  }
+
+  h5{
+    font-size: 1rem;
+  }
+
+  h6{
+    font-size:0.9rem;
+  }
+
+  .search-form{
+    max-width: 90%;
+  }
+
+  .search-form input{
+    max-width: 85%;
+  }
+
+  .current-temperature{
+    margin-left: 5px;
+  }
+
+  sup{
+    font-size: 13px;
+  }
+
+  .big-sun {
+    font-size: 45px;
+  }
+  
+  .small-sun {
+    font-size: 35px;
+  }
+  
+  .cloud-sun {
+    font-size: 34px;
+  }
+
 }

@@ -26,77 +26,77 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class=" border border-3 border-secondary">
-        <button id="current-btn" class="d-block w-25 mx-auto btn btn-secondary mb-3">
-          Current
-        </button>
-        <form id="search-form">
-          <div class="row">
-            <div
-            class="col col-md-6 col-sm-10 input-group mx-auto rounded-pill border border-3 border-secondary"
-          >
-            <i class="fas fa-search fa-lg my-3 pe-auto"></i>
-            <input
-              class="mx-auto border-0 text-center"
-              type="text"
-              placeholder="Location"
-              id="search-input"
-            />
-          </div>
-          </div>
-          <h5 class="date pt-2 fs-6 text-center">Saturday 15:49</h5>
-        </form>
-        <div class="px-4">
-          <div class="row">
-            <div class="col">
-              <h1 id="city-name">Tehran</h1>
-              <div class="d-flex align-items-center">
-                <i class="fas fa-sun big-sun"></i>
-                <h3 class="ms-3 gray-color">
-                  <span id="temperature">19
-                  <sup class="fs-6">
+    <div class="background">
+      <div class="container">
+        <div class="pt-3 border border-3 border-secondary">
+          <button id="current-btn" class="d-block mx-auto btn btn-secondary mb-3">
+            Current
+          </button>
+          <form id="search-form" class="search-form">
+              <div
+              class="input-group mx-auto rounded-pill border border-3 border-secondary"
+            >
+              <i class="fas fa-search fa-lg my-3 pe-auto"></i>
+              <input
+                class="mx-auto border-0 text-center"
+                type="text"
+                placeholder="Location"
+                id="search-input"
+              />
+            </div>
+            <h5 class="date pt-2 fs-6 text-center">Saturday 15:49</h5>
+          </form>
+          <div class="temperature-view">
+            <div class="row">
+              <div class="col">
+                <h1 id="city-name">Tehran</h1>
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-sun big-sun"></i>
+                  <h3 class="current-temperature gray-color">
+                    <span id="temperature">19</span>
+                  <sup>
                     <a href="#" id="change-to-C">°C</a>
                     |
                     <a href="#" id="change-to-F">°F</a>
                   </sup>
-                </span>
-                </h3>
+                  </h3>
+                </div>
+                <h5 class="desc gray-color">Sunny</h5>
               </div>
-              <h5 class="desc gray-color">Sunny</h5>
+              <div class="col gray-color text-end pt-4">
+                <h5>RealFeel <span id="realFeel" class="fs-6">31</span>°C</h5>
+                <h6>Humidity: <span id="humidity">50</span>%</h6>
+                <h6>wind: <span id="wind">6</span> km/h</h6>
+              </div>
             </div>
-            <div class="col gray-color text-end pt-4">
-              <h5>RealFeel <span class="fs-6">31°C</span></h5>
-              <h6>Humidity: <span id="humidity">50</span>%</h6>
-              <h6>wind: <span id="wind">6</span> km/h</h6>
-            </div>
-          </div>
-          <hr class="border border-secondary opacity-100" />
-          <div class="row gray-color pb-3">
-            <div class="col py-3 mx-3 text-center selected-box">
-              <h6>Today</h6>
-              <i class="fas fa-sun small-sun"></i>
-              <p class="pt-3">1° 5°</p>
-            </div>
-            <div class="col py-3 mx-3 text-center">
-              <h6>Sun 25</h6>
-              <i class="fas fa-cloud-sun cloud-sun"></i>
-              <p class="pt-3">2° 8°</p>
-            </div>
-            <div class="col py-3 mx-3 text-center">
-              <h6>Mon 26</h6>
-              <i class="fas fa-sun small-sun"></i>
-              <p class="pt-3">1° 8°</p>
-            </div>
-            <div class="col py-3 mx-3 text-center">
-              <h6 class="pt-3">Tue 27</h6>
-              <i class="fas fa-cloud-sun-rain cloud-sun"></i>
-              <p class="pt-3">2° 6°</p>
+            <hr class="border border-secondary opacity-100" />
+            <div class="row gray-color pb-3">
+              <div class="col py-3 mx-3 text-center selected-box">
+                <h6>Today</h6>
+                <i class="fas fa-sun small-sun"></i>
+                <p class="pt-3">1° 5°</p>
+              </div>
+              <div class="col py-3 mx-3 text-center">
+                <h6>Sun 25</h6>
+                <i class="fas fa-cloud-sun cloud-sun"></i>
+                <p class="pt-3">2° 8°</p>
+              </div>
+              <div class="col py-3 mx-3 text-center">
+                <h6>Mon 26</h6>
+                <i class="fas fa-sun small-sun"></i>
+                <p class="pt-3">1° 8°</p>
+              </div>
+              <div class="col py-3 mx-3 text-center">
+                <h6 class="pt-3">Tue 27</h6>
+                <i class="fas fa-cloud-sun-rain cloud-sun"></i>
+                <p class="pt-3">2° 6°</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    
 
     <script src="index.js"></script>
   </body>

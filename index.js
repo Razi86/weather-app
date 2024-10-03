@@ -2,13 +2,13 @@ let date = new Date();
 let hour = date.getHours();
 let minutes = date.getMinutes();
 const daysOfWeek = [
+  "Sunday",
   "Monday",
   "Tuesday",
   "Wednesday",
   "Thursday",
   "Friday",
   "Saturday ",
-  "Sunday",
 ];
 let day = daysOfWeek[date.getDay()];
 let showDay = document.querySelector(".date");
@@ -23,6 +23,7 @@ let APIkey = "d03082f141493054be15a6be78fc6dd5";
 let city = document.querySelector("#city-name");
 let temperatureSpan = document.querySelector("#temperature");
 let desc = document.querySelector(".desc");
+let realFeel= document.getElementById("realFeel");
 let wind = document.querySelector("#wind");
 let humidity = document.querySelector("#humidity");
 
@@ -52,6 +53,7 @@ function showTemperature(response) {
   city.innerHTML = response.data.name;
   temperatureSpan.innerHTML = Math.round(response.data.main.temp);
   desc.innerHTML = response.data.weather[0].description;
+  realFeel.innerHTML = response.data.main.feels_like;
   humidity.innerHTML = response.data.main.humidity;
   wind.innerHTML = Math.round(response.data.wind.speed);
 }
